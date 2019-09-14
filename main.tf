@@ -18,7 +18,7 @@ resource "azurerm_subnet" "subnet" {
   virtual_network_name = "${azurerm_virtual_network.vnet.name}"
   resource_group_name  = "${azurerm_resource_group.network.name}"
   address_prefix       = "${var.subnet_prefixes[count.index]}"
-  count                = "${var.service_endpoints == "[]" ? length(var.subnet_names): 0 }"
+  count                = "${var.service_endpoints[0] == "" ? length(var.subnet_names): 0 }"
 }
 
 resource "azurerm_subnet" "subnet_with_service_endpoints" {
@@ -26,5 +26,5 @@ resource "azurerm_subnet" "subnet_with_service_endpoints" {
   virtual_network_name = "${azurerm_virtual_network.vnet.name}"
   resource_group_name  = "${azurerm_resource_group.network.name}"
   address_prefix       = "${var.subnet_prefixes[count.index]}"
-  count                = "${var.service_endpoints != "[]" ? length(var.subnet_names): 0 }"
+  count                = "${var.service_endpoints[0] != "" ? length(var.subnet_names): 0 }"
 }
