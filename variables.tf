@@ -42,3 +42,7 @@ variable "tags" {
     tag2 = ""
   }
 }
+variable "service_endpoints" {
+  description = "(Optional) The list of Service endpoints to associate with the subnet. Possible values include: Microsoft.AzureActiveDirectory, Microsoft.AzureCosmosDB, Microsoft.ContainerRegistry, Microsoft.EventHub, Microsoft.KeyVault, Microsoft.ServiceBus, Microsoft.Sql, Microsoft.Storage and Microsoft.Web"
+  default = [""]
+}
