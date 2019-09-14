@@ -27,4 +27,5 @@ resource "azurerm_subnet" "subnet_with_service_endpoints" {
   resource_group_name  = "${azurerm_resource_group.network.name}"
   address_prefix       = "${var.subnet_prefixes[count.index]}"
   count                = "${var.service_endpoints[0] != "" ? length(var.subnet_names): 0 }"
+  service_endpoints    = "${var.service_endpoints}"
 }
